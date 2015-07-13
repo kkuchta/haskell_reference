@@ -21,4 +21,7 @@ comprehension = [x*2 | x <- [1..10], x * 3 > 10, x < 9]
 {- Runs expression with each possible pair of x,y from the lists -}
 multiple_values = [x+y | x <- [1..3], y <- [10,100,1000]]
 
+lets_in_comprehensions =
+  let rs = [1..100]
+  in [(a,b,sum)| a <- rs, b <- rs, let sum = a + b, sum == 31]
 

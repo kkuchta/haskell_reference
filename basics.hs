@@ -1,3 +1,4 @@
+true_not_equal = 4 /= 2
 infix_notation = (div 92 10) == (91 `div` 10)
 
 a_function a b = a + b
@@ -40,8 +41,41 @@ threeHead _ = ""
 
 duplicate_first foo@(x:xs) = x:foo
 
-{- Guards -}
+contains_two xs = case xs of
+  [] -> False
+  2:_ -> True
+  x:xs -> contains_two xs
+
+{- flow control -}
 guarded x
   | x > 3 = "foo"
   | x < 3 = "bar"
   | otherwise = "baz"
+
+multi_guarderd x y
+  | x > y = "larger x"
+  | otherwise = "larger y"
+
+sum_where x y = the_sum
+  where the_sum = x + y
+
+first_letters :: String -> String -> String
+first_letters x y = x_first:[y_first]
+  where (x_first:xs) = x
+        (y_first:ys) = y
+
+sum_squared x y =
+  let sum = x + y
+  in sum * sum
+
+sum_squared' x y =
+  let square z = z * z
+  in square (x + y)
+
+{- Functions -}
+
+three = max 3 2
+three_or_x = max 3
+four = three_or_x 4
+
+plus_three = (+ 3)
